@@ -5,13 +5,13 @@
     <parent>
         <groupId>com.gunyoung</groupId>
         <artifactId>kommon</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.2</version>
     </parent>
 
     <groupId>com.gunyoung</groupId>
     <artifactId>persona</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
 
     <modules>
         <module>persona-api</module>
@@ -27,7 +27,8 @@
         <h2database.version>1.4.200</h2database.version>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <mapstruct.kotlin.version>1.4.0.0</mapstruct.kotlin.version>
-        <kotlin.version>1.0.0</kotlin.version>
+
+        <querydsl.version>4.3.1</querydsl.version>
     </properties>
 
     <dependencyManagement>
@@ -35,17 +36,17 @@
             <dependency>
                 <groupId>com.gunyoung</groupId>
                 <artifactId>persona-common</artifactId>
-                <version>0.0.2</version>
+                <version>0.0.3</version>
             </dependency>
             <dependency>
                 <groupId>com.gunyoung</groupId>
                 <artifactId>persona-api</artifactId>
-                <version>0.0.2</version>
+                <version>0.0.3</version>
             </dependency>
             <dependency>
                 <groupId>com.gunyoung</groupId>
                 <artifactId>persona-view</artifactId>
-                <version>0.0.2</version>
+                <version>0.0.3</version>
             </dependency>
             <dependency>
                 <groupId>org.mapstruct</groupId>
@@ -65,57 +66,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <version>${kotlin.version}</version>
-                <configuration>
-                    <args>
-                        <arg>-Xjsr305=strict</arg>
-                    </args>
-                    <compilerPlugins>
-                        <plugin>spring</plugin>
-                    </compilerPlugins>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>compile</id>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>kapt</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>kapt</goal>
-                        </goals>
-                        <configuration>
-                            <sourceDirs>
-                                <sourceDir>src/main/kotlin</sourceDir>
-                            </sourceDirs>
-                            <annotationProcessorPaths>
-                                <annotationProcessorPath>
-                                    <groupId>org.mapstruct</groupId>
-                                    <artifactId>mapstruct-processor</artifactId>
-                                    <version>${mapstruct.version}</version>
-                                </annotationProcessorPath>
-                            </annotationProcessorPaths>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.version}</version>
-            </plugin>
-        </plugins>
-    </build>
 
     <repositories>
         <repository>
