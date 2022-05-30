@@ -11,7 +11,7 @@
     <groupId>com.gunyoung</groupId>
     <artifactId>persona</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.4-SNAPSHOT</version>
 
     <modules>
         <module>persona-api</module>
@@ -36,17 +36,17 @@
             <dependency>
                 <groupId>com.gunyoung</groupId>
                 <artifactId>persona-common</artifactId>
-                <version>0.0.3-SNAPSHOT</version>
+                <version>0.0.4-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.gunyoung</groupId>
                 <artifactId>persona-api</artifactId>
-                <version>0.0.3-SNAPSHOT</version>
+                <version>0.0.4-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.gunyoung</groupId>
                 <artifactId>persona-view</artifactId>
-                <version>0.0.3-SNAPSHOT</version>
+                <version>0.0.4-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.mapstruct</groupId>
