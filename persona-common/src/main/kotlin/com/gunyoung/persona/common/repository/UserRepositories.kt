@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository
 @Repository
 interface UserRepository {
     fun findUserByTaliId(taliId: String): User?
+
+    fun save(user: User): User
 }

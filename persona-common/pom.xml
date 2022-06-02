@@ -16,6 +16,10 @@
             <groupId>com.gunyoung</groupId>
             <artifactId>kommon-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.ninja-squad</groupId>
+            <artifactId>springmockk</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

@@ -10,6 +10,16 @@ class UserService(
     val userRepository: UserRepository
 ) {
 
-    fun findUserByTaliId(taliId: String) : User =
+    fun findUserByTaliId(taliId: String): User =
         userRepository.findUserByTaliId(taliId) ?: throw UserNotFoundException()
+
+    fun modifyPhoneNumber(taliId: String, updatedPhoneNumber: String): User =
+        findUserByTaliId(taliId)
+            .updatePhoneNumber(updatedPhoneNumber)
+            .save()
+
+    private fun User.updatePhoneNumber(updatedPhoneNumber: String): User =
+        copy(phoneNumber = updatedPhoneNumber)
+
+    private fun User.save(): User = userRepository.save(this)
 }
