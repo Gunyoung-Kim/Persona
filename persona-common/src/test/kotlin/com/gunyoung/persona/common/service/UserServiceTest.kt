@@ -1,6 +1,6 @@
 package com.gunyoung.persona.common.service
 
-import com.gunyoung.persona.common.model.User
+import com.gunyoung.persona.common.model.UserEntity
 import com.gunyoung.persona.common.model.UserNotFoundException
 import com.gunyoung.persona.common.repository.UserRepository
 import com.gunyoung.persona.common.testutil.sampleUser
@@ -80,7 +80,7 @@ internal class UserServiceUnitTest {
         assertEquals(updatedPhoneNumber, result.phoneNumber)
     }
 
-    private fun UserRepository.stubFindByTaliIdReturnSampleUser(taliId: String): User {
+    private fun UserRepository.stubFindByTaliIdReturnSampleUser(taliId: String): UserEntity {
         val sampleUser = sampleUser(taliId = taliId)
         every { this@stubFindByTaliIdReturnSampleUser.findUserByTaliId(taliId) } returns sampleUser
         return sampleUser

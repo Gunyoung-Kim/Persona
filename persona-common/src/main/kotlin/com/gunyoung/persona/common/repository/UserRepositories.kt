@@ -1,11 +1,11 @@
 package com.gunyoung.persona.common.repository
 
-import com.gunyoung.persona.common.model.User
+import com.gunyoung.persona.common.model.UserEntity
 import org.springframework.stereotype.Repository
 
 @Repository
 interface UserRepository {
-    fun findUserByTaliId(taliId: String): User?
+    fun findUserByTaliId(taliId: String): UserEntity?
 
-    fun save(user: User): User
+    fun save(user: UserEntity): UserEntity
 }

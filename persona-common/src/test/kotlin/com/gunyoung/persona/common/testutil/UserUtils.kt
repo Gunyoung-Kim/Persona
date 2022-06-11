@@ -1,6 +1,6 @@
 package com.gunyoung.persona.common.testutil
 
-import com.gunyoung.persona.common.model.User
+import com.gunyoung.persona.common.model.UserEntity
 
 fun sampleUser(
     userId: Long = 1L,
@@ -9,5 +9,5 @@ fun sampleUser(
     lastName: String = "테",
     email: String = "test@tali.com",
     phoneNumber: String = "010-1234-5678"
-): User =
-    User(userId, taliId, firstName, lastName, email, phoneNumber)
+): UserEntity =
+    UserEntity(userId, taliId, firstName, lastName, email, phoneNumber)

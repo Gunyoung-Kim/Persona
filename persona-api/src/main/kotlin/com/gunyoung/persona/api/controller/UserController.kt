@@ -1,23 +1,19 @@
 package com.gunyoung.persona.api.controller
 
 import com.gunyoung.persona.common.model.UpdatePhoneNumberRequest
-import com.gunyoung.persona.common.model.User
+import com.gunyoung.persona.common.model.UserEntity
 import com.gunyoung.persona.common.model.UserPhoneNumberResponse
 import com.gunyoung.persona.common.service.UserService
-import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.*
 
-@Controller
+@RestController
 @RequestMapping("/v1/api/users")
 class UserController(
     val userService: UserService
 ) {
 
     @GetMapping("/{taliId}")
-    fun findUserByTaliId(@PathVariable("taliId") taliId: String): User =
+    fun findUserByTaliId(@PathVariable("taliId") taliId: String): UserEntity =
         userService.findUserByTaliId(taliId)
 
     @PutMapping("/phonenumber")
@@ -27,7 +23,7 @@ class UserController(
             updatedPhoneNumber = updatePhoneNumberRequest.phoneNumber
         ).createPhoneNumberResponse()
 
-    private fun User.createPhoneNumberResponse(): UserPhoneNumberResponse =
+    private fun UserEntity.createPhoneNumberResponse(): UserPhoneNumberResponse =
         UserPhoneNumberResponse(
             taliId = this.taliId,
             phoneNumber = this.phoneNumber
