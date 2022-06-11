@@ -1,8 +1,8 @@
 package com.gunyoung.persona.api.controller
 
-import com.gunyoung.persona.common.model.UpdatePhoneNumberRequest
+import com.gunyoung.persona.api.model.UpdatePhoneNumberRequest
+import com.gunyoung.persona.api.model.UserPhoneNumberResponse
 import com.gunyoung.persona.common.model.UserEntity
-import com.gunyoung.persona.common.model.UserPhoneNumberResponse
 import com.gunyoung.persona.common.service.UserService
 import org.springframework.web.bind.annotation.*
 

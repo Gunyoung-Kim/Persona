@@ -1,4 +1,4 @@
-package com.gunyoung.persona.common.model
+package com.gunyoung.persona.api.model
 
 data class UpdatePhoneNumberRequest(
     val taliId: String,
