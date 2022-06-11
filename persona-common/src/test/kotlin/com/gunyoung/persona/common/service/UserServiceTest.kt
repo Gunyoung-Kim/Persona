@@ -58,7 +58,7 @@ internal class UserServiceUnitTest {
 
         // when, then
         assertThrows<UserNotFoundException> {
-            userService.modifyPhoneNumber(nonExistTaliId, updatedPhoneNumber)
+            userService.updatePhoneNumber(nonExistTaliId, updatedPhoneNumber)
         }
     }
 
@@ -74,7 +74,7 @@ internal class UserServiceUnitTest {
         assertNotEquals(sampleUser.phoneNumber, updatedPhoneNumber)
 
         // when
-        val result = userService.modifyPhoneNumber(taliId, updatedPhoneNumber)
+        val result = userService.updatePhoneNumber(taliId, updatedPhoneNumber)
 
         // then
         assertEquals(updatedPhoneNumber, result.phoneNumber)

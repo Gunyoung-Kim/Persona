@@ -13,7 +13,7 @@ class UserService(
     fun findUserByTaliId(taliId: String): UserEntity =
         userRepository.findUserByTaliId(taliId) ?: throw UserNotFoundException()
 
-    fun modifyPhoneNumber(taliId: String, updatedPhoneNumber: String): UserEntity =
+    fun updatePhoneNumber(taliId: String, updatedPhoneNumber: String): UserEntity =
         findUserByTaliId(taliId)
             .updatePhoneNumber(updatedPhoneNumber)
             .save()

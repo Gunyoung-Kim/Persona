@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/v1/api/users")
 class UserController(
-    val userService: UserService
+    private val userService: UserService
 ) {
 
     @GetMapping("/{taliId}")
@@ -18,7 +18,7 @@ class UserController(
 
     @PutMapping("/phonenumber")
     fun modifyPhoneNumber(updatePhoneNumberRequest: UpdatePhoneNumberRequest): UserPhoneNumberResponse =
-        userService.modifyPhoneNumber(
+        userService.updatePhoneNumber(
             taliId = updatePhoneNumberRequest.taliId,
             updatedPhoneNumber = updatePhoneNumberRequest.phoneNumber
         ).createPhoneNumberResponse()
