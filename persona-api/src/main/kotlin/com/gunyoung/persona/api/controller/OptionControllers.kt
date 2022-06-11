@@ -14,15 +14,15 @@ class AlarmOptionControllers(
     private val alarmOptionService: AlarmOptionService
 ) {
 
-    @GetMapping("/phone/{taliId}")
-    fun isPhoneAlarmReceived(@PathVariable("taliId") taliId: String): Boolean =
-        alarmOptionService.isPhoneAlarmReceived(taliId)
+    @GetMapping("/sms/{taliId}")
+    fun isSmsAlarmReceived(@PathVariable("taliId") taliId: String): Boolean =
+        alarmOptionService.isSmsAlarmReceived(taliId)
 
-    @PutMapping("/phone/{taliId}", params = ["isReceived"])
-    fun updatePhoneAlarmReceived(
+    @PutMapping("/sms/{taliId}", params = ["isReceived"])
+    fun updateSmsAlarmReceived(
         @PathVariable("taliId") taliId: String,
         @RequestParam("isReceived") isReceived: Boolean
-    ): Boolean = alarmOptionService.updatePhoneAlarmReceived(taliId, isReceived)
+    ): Boolean = alarmOptionService.updateSmsAlarmReceived(taliId, isReceived)
 
     @GetMapping("/mail/{taliId}")
     fun isMailAlarmReceived(@PathVariable("taliId") taliId: String): Boolean =

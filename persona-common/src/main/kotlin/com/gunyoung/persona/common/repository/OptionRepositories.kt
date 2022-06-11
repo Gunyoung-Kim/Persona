@@ -4,11 +4,11 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface AlarmOptionRepository {
-    fun isPhoneAlarmReceived(taliId: String): Boolean
+    fun isSmsAlarmReceived(userId: Long): Boolean
 
-    fun updatePhoneAlarmReceived(taliId: String, isReceived: Boolean): Boolean
+    fun updateSmsAlarmReceived(userId: Long, isReceived: Boolean): Boolean
 
-    fun isMailAlarmReceived(taliId: String): Boolean
+    fun isMailAlarmReceived(userId: Long): Boolean
 
-    fun updateMailAlarmReceived(taliId: String, isReceived: Boolean): Boolean
+    fun updateMailAlarmReceived(userId: Long, isReceived: Boolean): Boolean
 }

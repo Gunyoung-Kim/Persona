@@ -56,8 +56,8 @@ class UserEntity(
 @Entity
 @Table(name = "user_alarm_option")
 class AlarmOptionEntity(
-    @Column(name = "phone_alarm_received")
-    var isPhoneAlarmReceived: Boolean = false,
+    @Column(name = "sms_alarm_received")
+    var isSmsAlarmReceived: Boolean = false,
     @Column(name = "mail_alarm_received")
     var isMailAlarmReceived: Boolean = false,
 

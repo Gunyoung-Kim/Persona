@@ -18,8 +18,9 @@ class UserService(
             .updatePhoneNumber(updatedPhoneNumber)
             .save()
 
-    private fun UserEntity.updatePhoneNumber(updatedPhoneNumber: String): UserEntity =
-        copy(phoneNumber = updatedPhoneNumber)
+    private fun UserEntity.updatePhoneNumber(updatedPhoneNumber: String): UserEntity = apply {
+        this.phoneNumber = updatedPhoneNumber
+    }
 
     private fun UserEntity.save(): UserEntity = userRepository.save(this)
 }

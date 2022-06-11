@@ -9,3 +9,10 @@ interface UserRepository {
 
     fun save(user: UserEntity): UserEntity
 }
+
+@Repository
+interface UserIdMappingRepository {
+    fun findTaliIdById(id: Long): String?
+
+    fun findIdByTaliId(taliId: String): Long?
+}
