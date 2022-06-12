@@ -4,7 +4,7 @@ import com.gunyoung.persona.common.model.UserEntity
 import com.gunyoung.persona.common.model.UserStatus
 import java.time.LocalDate
 
-fun sampleUser(
+fun sampleUserEntity(
     taliId: String = "test",
     firstName: String = "스트",
     lastName: String = "테",

@@ -3,7 +3,7 @@ package com.gunyoung.persona.common.service
 import com.gunyoung.persona.common.model.UserEntity
 import com.gunyoung.persona.common.model.UserNotFoundException
 import com.gunyoung.persona.common.repository.UserRepository
-import com.gunyoung.persona.common.testutil.sampleUser
+import com.gunyoung.persona.common.testutil.sampleUserEntity
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
@@ -81,7 +81,7 @@ internal class UserServiceUnitTest {
     }
 
     private fun UserRepository.stubFindByTaliIdReturnSampleUser(taliId: String): UserEntity {
-        val sampleUser = sampleUser(taliId = taliId)
+        val sampleUser = sampleUserEntity(taliId = taliId)
         every { this@stubFindByTaliIdReturnSampleUser.findUserByTaliId(taliId) } returns sampleUser
         return sampleUser
     }

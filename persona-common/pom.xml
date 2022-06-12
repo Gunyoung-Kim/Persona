@@ -20,6 +20,10 @@
             <groupId>com.ninja-squad</groupId>
             <artifactId>springmockk</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -38,13 +42,8 @@
                     </args>
                     <compilerPlugins>
                         <plugin>spring</plugin>
-                        <plugin>jpa</plugin>
-                        <plugin>no-arg</plugin>
                         <plugin>all-open</plugin>
                     </compilerPlugins>
-                    <pluginOptions>
-                        <option>no-arg:annotation=org.mapstruct.example.kotlin.DefaultConstructor</option>
-                    </pluginOptions>
                 </configuration>
                 <executions>
                     <execution>

@@ -1,9 +1,11 @@
 package com.gunyoung.persona.common.service
 
+import com.gunyoung.persona.common.model.AlarmOptionNotFoundException
 import com.gunyoung.persona.common.model.UserNotFoundException
 import com.gunyoung.persona.common.repository.AlarmOptionRepository
 import com.gunyoung.persona.common.repository.UserIdMappingRepository
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class AlarmOptionService(
@@ -14,9 +16,10 @@ class AlarmOptionService(
     fun isSmsAlarmReceived(taliId: String): Boolean =
         convertTaliIdToUserId(taliId).let { userId ->
             alarmOptionRepository.isSmsAlarmReceived(userId)
-        }
+        } ?: throw AlarmOptionNotFoundException()
 
-    fun updateSmsAlarmReceived(taliId: String, isReceived: Boolean): Boolean =
+    @Transactional
+    fun updateSmsAlarmReceived(taliId: String, isReceived: Boolean): Long =
         convertTaliIdToUserId(taliId).let { userId ->
             alarmOptionRepository.updateSmsAlarmReceived(userId, isReceived)
         }
@@ -24,9 +27,10 @@ class AlarmOptionService(
     fun isMailAlarmReceived(taliId: String): Boolean =
         convertTaliIdToUserId(taliId).let { userId ->
             alarmOptionRepository.isMailAlarmReceived(userId)
-        }
+        } ?: throw AlarmOptionNotFoundException()
 
-    fun updateMailAlarmReceived(taliId: String, isReceived: Boolean): Boolean =
+    @Transactional
+    fun updateMailAlarmReceived(taliId: String, isReceived: Boolean): Long =
         convertTaliIdToUserId(taliId).let { userId ->
             alarmOptionRepository.updateMailAlarmReceived(userId, isReceived)
         }

@@ -4,3 +4,4 @@ open class PersonaException : RuntimeException()
 
 open class NotFoundException : PersonaException()
 class UserNotFoundException : NotFoundException()
+class AlarmOptionNotFoundException : NotFoundException()

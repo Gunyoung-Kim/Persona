@@ -1,5 +1,6 @@
 package com.gunyoung.persona.api.controller
 
+import com.gunyoung.kommon.common.util.notReturn
 import com.gunyoung.persona.common.service.AlarmOptionService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -22,7 +23,7 @@ class AlarmOptionControllers(
     fun updateSmsAlarmReceived(
         @PathVariable("taliId") taliId: String,
         @RequestParam("isReceived") isReceived: Boolean
-    ): Boolean = alarmOptionService.updateSmsAlarmReceived(taliId, isReceived)
+    ): Unit = alarmOptionService.updateSmsAlarmReceived(taliId, isReceived).notReturn()
 
     @GetMapping("/mail/{taliId}")
     fun isMailAlarmReceived(@PathVariable("taliId") taliId: String): Boolean =
@@ -32,5 +33,5 @@ class AlarmOptionControllers(
     fun updateMailAlarmReceived(
         @PathVariable("taliId") taliId: String,
         @RequestParam("isReceived") isReceived: Boolean
-    ): Boolean = alarmOptionService.updateMailAlarmReceived(taliId, isReceived)
+    ): Unit = alarmOptionService.updateMailAlarmReceived(taliId, isReceived).notReturn()
 }

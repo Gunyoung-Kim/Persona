@@ -74,13 +74,15 @@ internal class AlarmOptionServiceUnitTest {
         val newIsReceived = true
         userIdMappingRepository.stubFindIdByTaliIdWithSampleIds()
 
-        every { alarmOptionRepository.updateSmsAlarmReceived(sampleUserId, newIsReceived) } returns newIsReceived
+        val effectedRow = 1L
+
+        every { alarmOptionRepository.updateSmsAlarmReceived(sampleUserId, newIsReceived) } returns effectedRow
 
         // when
         val result = alarmOptionService.updateSmsAlarmReceived(sampleTaliId, newIsReceived)
 
         // then
-        assertEquals(newIsReceived, result)
+        assertEquals(effectedRow, result)
     }
 
     @Test
@@ -129,13 +131,15 @@ internal class AlarmOptionServiceUnitTest {
         val newIsReceived = true
         userIdMappingRepository.stubFindIdByTaliIdWithSampleIds()
 
-        every { alarmOptionRepository.updateMailAlarmReceived(sampleUserId, newIsReceived) } returns newIsReceived
+        val effectedRow = 1L
+
+        every { alarmOptionRepository.updateMailAlarmReceived(sampleUserId, newIsReceived) } returns effectedRow
 
         // when
         val result = alarmOptionService.updateMailAlarmReceived(sampleTaliId, newIsReceived)
 
         // then
-        assertEquals(newIsReceived, result)
+        assertEquals(effectedRow, result)
     }
 
     private fun UserIdMappingRepository.stubFindIdByTaliIdReturnNull(nonExistTaliId: String) {
