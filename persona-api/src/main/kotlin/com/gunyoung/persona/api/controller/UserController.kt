@@ -16,6 +16,14 @@ class UserController(
     fun findUserByTaliId(@PathVariable("taliId") taliId: String): UserEntity =
         userService.findUserByTaliId(taliId)
 
+    @GetMapping("/{taliId}/id")
+    fun findUserIdByTaliId(@PathVariable("taliId") taliId: String): Long =
+        userService.findUserIdByTaliId(taliId)
+
+    @GetMapping("/{userId}/taliId")
+    fun findTaliIdByUserId(@PathVariable("userId") userId: Long): String =
+        userService.findTaliIdByUserId(userId)
+
     @PutMapping("/phonenumber")
     fun modifyPhoneNumber(updatePhoneNumberRequest: UpdatePhoneNumberRequest): UserPhoneNumberResponse =
         userService.updatePhoneNumber(
