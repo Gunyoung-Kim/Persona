@@ -4,6 +4,7 @@ import com.gunyoung.persona.common.model.UserEntity
 import com.gunyoung.persona.common.model.UserNotFoundException
 import com.gunyoung.persona.common.repository.UserRepository
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class UserService(
@@ -13,6 +14,7 @@ class UserService(
     fun findUserByTaliId(taliId: String): UserEntity =
         userRepository.findUserByTaliId(taliId) ?: throw UserNotFoundException()
 
+    @Transactional
     fun updatePhoneNumber(taliId: String, updatedPhoneNumber: String): UserEntity =
         findUserByTaliId(taliId)
             .updatePhoneNumber(updatedPhoneNumber)
