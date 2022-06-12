@@ -7,6 +7,8 @@ import java.time.LocalDate
 import java.time.OffsetDateTime
 import javax.persistence.*
 
+const val NON_EXIST_ID = -1L
+
 @MappedSuperclass
 abstract class IdentifiableEntity(
     @Id
