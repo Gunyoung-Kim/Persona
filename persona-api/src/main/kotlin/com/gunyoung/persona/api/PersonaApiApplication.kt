@@ -9,5 +9,4 @@ import org.springframework.context.annotation.Import
 class PersonaApiApplication
 
 fun main(args: Array<String>) {
-
 }

@@ -19,3 +19,13 @@ data class UserResponse(
     val birthDate: LocalDate,
     val status: UserStatus
 )
+
+data class UserAndAlarmOptionResponse(
+    val user: UserResponse,
+    val alarmOption: AlarmOptionResponse
+)
+
+data class AlarmOptionResponse(
+    val isSmsAlarmReceived: Boolean,
+    val isMailAlarmReceived: Boolean
+)

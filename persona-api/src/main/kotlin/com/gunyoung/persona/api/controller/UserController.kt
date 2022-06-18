@@ -3,6 +3,7 @@ package com.gunyoung.persona.api.controller
 import com.gunyoung.persona.api.model.*
 import com.gunyoung.persona.common.service.UserService
 import org.springframework.web.bind.annotation.*
+import java.time.LocalDate
 
 @RestController
 @RequestMapping("/v1/api/users")
@@ -22,6 +23,16 @@ class UserController(
     @GetMapping("/{userId}/taliId")
     fun findTaliIdByUserId(@PathVariable("userId") userId: Long): String =
         userService.findTaliIdByUserId(userId)
+
+//    /**
+//     * 추후 매니저에 빼자
+//     */
+//    @GetMapping("/birthdate")
+//    fun getBirthDayUsers(
+//        @RequestParam("date") date: LocalDate
+//    ): List<UserAndAlarmOptionResponse> {
+//
+//    }
 
     @PutMapping("/phonenumber")
     fun modifyPhoneNumber(updatePhoneNumberRequest: UpdatePhoneNumberRequest): UserPhoneNumberResponse =
