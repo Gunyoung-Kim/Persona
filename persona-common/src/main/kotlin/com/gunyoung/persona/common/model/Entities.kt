@@ -46,7 +46,7 @@ abstract class AuditableEntity(
         Index(name = "USER_STATUS_INDEX", columnList = "status")
     ]
 )
-@Where(clause = "status != 'DELETED")
+@Where(clause = "status != 'DELETED'")
 class UserEntity(
     @Column(name = "tali_id", length = 20, unique = true, nullable = false)
     var taliId: String = "",

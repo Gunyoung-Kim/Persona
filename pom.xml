@@ -93,6 +93,12 @@
                 <groupId>it.ozimov</groupId>
                 <artifactId>embedded-redis</artifactId>
                 <version>${embedded.redis.test.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.google.guava</groupId>
+                        <artifactId>guava</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
