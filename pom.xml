@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.gunyoung</groupId>
         <artifactId>kommon</artifactId>
-        <version>0.0.2</version>
+        <version>0.0.3</version>
     </parent>
 
     <groupId>com.gunyoung</groupId>
@@ -25,11 +25,14 @@
 
         <mysql.connector.version>8.0.25</mysql.connector.version>
         <h2database.version>1.4.200</h2database.version>
+        <embedded.redis.test.version>0.7.2</embedded.redis.test.version>
+
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <mapstruct.kotlin.version>1.4.0.0</mapstruct.kotlin.version>
 
         <querydsl.version>4.3.1</querydsl.version>
-        <spring.mockk.version>3.0.1</spring.mockk.version>
+        <spring.mockk.version>3.1.1</spring.mockk.version>
+        <spring.boot.starter.redis.version>2.4.4</spring.boot.starter.redis.version>
     </properties>
 
     <dependencyManagement>
@@ -74,6 +77,22 @@
                 <groupId>com.querydsl</groupId>
                 <artifactId>querydsl-jpa</artifactId>
                 <version>${querydsl.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring.boot.starter.redis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>it.ozimov</groupId>
+                <artifactId>embedded-redis</artifactId>
+                <version>${embedded.redis.test.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

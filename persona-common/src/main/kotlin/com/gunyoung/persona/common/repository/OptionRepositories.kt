@@ -3,7 +3,6 @@ package com.gunyoung.persona.common.repository
 import com.gunyoung.persona.common.model.AlarmOptionEntity
 import com.gunyoung.persona.common.model.QAlarmOptionEntity.alarmOptionEntity
 import com.querydsl.jpa.JPAExpressions.select
-import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 import org.springframework.stereotype.Repository
@@ -23,7 +22,7 @@ interface CustomizedAlarmOptionRepository {
 }
 
 @Repository
-class CustomizedAlarmOptionQueryRepositoryImpl : QuerydslRepositorySupport(AlarmOptionEntity::class.java),
+class CustomizedAlarmOptionRepositoryImpl : QuerydslRepositorySupport(AlarmOptionEntity::class.java),
     CustomizedAlarmOptionRepository {
 
     override fun isSmsAlarmReceived(userId: Long): Boolean? =

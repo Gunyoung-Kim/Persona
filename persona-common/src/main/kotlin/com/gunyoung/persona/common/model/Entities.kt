@@ -24,7 +24,19 @@ abstract class AuditableEntity(
     @LastModifiedBy
     @Column(name = "last_modified_at", nullable = false)
     var lastModifiedAt: OffsetDateTime? = null
-) : IdentifiableEntity()
+) : IdentifiableEntity() {
+
+    @PrePersist
+    fun onPrePersist() {
+        createdAt = OffsetDateTime.now()
+        lastModifiedAt = OffsetDateTime.now()
+    }
+
+    @PreUpdate
+    fun onPreUpdate() {
+        lastModifiedAt = OffsetDateTime.now()
+    }
+}
 
 @Entity
 @Table(

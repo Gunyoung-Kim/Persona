@@ -5,6 +5,7 @@ import com.gunyoung.persona.common.model.UserEntity
 import com.querydsl.jpa.JPAExpressions.selectFrom
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
+import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -24,9 +25,22 @@ class CustomizedUserRepositoryImpl : QuerydslRepositorySupport(UserEntity::class
             .fetchOne()
 }
 
-@Repository
 interface UserIdMappingRepository {
     fun findTaliIdById(id: Long): String?
 
     fun findIdByTaliId(taliId: String): Long?
+}
+
+@Repository
+class UserIdMappingRepositoryImpl(
+    private val redisTemplate: RedisTemplate<String, Long>
+) : UserIdMappingRepository {
+    override fun findTaliIdById(id: Long): String? {
+        TODO("Not yet implemented")
+    }
+
+    override fun findIdByTaliId(taliId: String): Long? {
+        TODO("Not yet implemented")
+    }
+
 }
