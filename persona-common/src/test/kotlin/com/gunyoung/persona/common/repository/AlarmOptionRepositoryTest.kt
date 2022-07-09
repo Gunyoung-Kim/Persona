@@ -1,6 +1,6 @@
 package com.gunyoung.persona.common.repository
 
-import com.gunyoung.persona.common.config.CommonConfig
+import com.gunyoung.persona.common.SpringBootTestConfig
 import com.gunyoung.persona.common.model.AlarmOptionEntity
 import com.gunyoung.persona.common.model.UserEntity
 import com.gunyoung.persona.common.testutil.sampleAlarmOptionEntity
@@ -9,15 +9,12 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.annotation.Import
-import org.springframework.transaction.annotation.Transactional
 import kotlin.test.assertEquals
 
 @SpringBootTest
-@SpringBootApplication
-@Import(CommonConfig::class)
+@Import(SpringBootTestConfig::class)
 class AlarmOptionRepositoryTest(
     @Autowired
     private val userRepository: UserRepository,
