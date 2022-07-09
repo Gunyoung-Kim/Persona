@@ -3,6 +3,7 @@ package com.gunyoung.persona.common.repository
 import com.gunyoung.persona.common.model.QUserEntity.userEntity
 import com.gunyoung.persona.common.model.UserEntity
 import com.querydsl.jpa.JPAExpressions.selectFrom
+import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 import org.springframework.data.redis.core.RedisTemplate
@@ -16,11 +17,12 @@ interface CustomizedUserRepository {
 }
 
 @Repository
-class CustomizedUserRepositoryImpl : QuerydslRepositorySupport(UserEntity::class.java),
-    CustomizedUserRepository {
+class CustomizedUserRepositoryImpl(
+    val queryFactory: JPAQueryFactory
+) : CustomizedUserRepository {
 
     override fun findUserByTaliId(taliId: String): UserEntity? =
-        selectFrom(userEntity)
+        queryFactory.selectFrom(userEntity)
             .where(userEntity.taliId.eq(taliId))
             .fetchOne()
 }

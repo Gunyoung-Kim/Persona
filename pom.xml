@@ -72,6 +72,16 @@
                 <groupId>com.ninja-squad</groupId>
                 <artifactId>springmockk</artifactId>
                 <version>${spring.mockk.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-test</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>com.querydsl</groupId>

@@ -50,7 +50,6 @@ class AlarmOptionRepositoryTest(
         // given
         val isSmsAlarmReceived = sampleAlarmOption.isSmsAlarmReceived
         val userId = sampleUser.id!!
-
         // when
         val result = alarmOptionRepository.isSmsAlarmReceived(userId)
 
@@ -71,20 +70,20 @@ class AlarmOptionRepositoryTest(
 
         // then
         assertEquals(1L, result)
-        assertEquals(newIsSmsAlarmReceived, alarmOptionRepository.isMailAlarmReceived(userId))
+        assertEquals(newIsSmsAlarmReceived, alarmOptionRepository.isSmsAlarmReceived(userId))
     }
 
     @Test
     fun `Mail 알람 수신 여부를 확인한다`() {
         // given
-        val isMailAlaramReceived = sampleAlarmOption.isMailAlarmReceived
+        val isMailAlarmReceived = sampleAlarmOption.isMailAlarmReceived
         val userId = sampleUser.id!!
 
         // when
         val result = alarmOptionRepository.isMailAlarmReceived(userId)
 
         // then
-        assertEquals(isMailAlaramReceived, result)
+        assertEquals(isMailAlarmReceived, result)
     }
 
     @Test
