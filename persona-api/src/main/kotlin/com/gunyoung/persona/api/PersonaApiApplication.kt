@@ -1,6 +1,7 @@
 package com.gunyoung.persona.api
 
 import com.gunyoung.persona.common.config.CommonComponentConfig
+import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Import
 
@@ -9,4 +10,5 @@ import org.springframework.context.annotation.Import
 class PersonaApiApplication
 
 fun main(args: Array<String>) {
+    SpringApplication.run(PersonaApiApplication::class.java, *args)
 }

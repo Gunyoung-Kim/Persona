@@ -2,6 +2,7 @@ package com.gunyoung.persona.common.service
 
 import com.gunyoung.persona.common.model.UserEntity
 import com.gunyoung.persona.common.model.UserNotFoundException
+import com.gunyoung.persona.common.repository.UserIdMappingRepository
 import com.gunyoung.persona.common.repository.UserRepository
 import com.gunyoung.persona.common.testutil.sampleUserEntity
 import io.mockk.every
@@ -19,6 +20,9 @@ internal class UserServiceUnitTest {
 
     @MockK
     lateinit var userRepository: UserRepository
+
+    @MockK
+    lateinit var userIdMappingRepository: UserIdMappingRepository
 
     @InjectMockKs
     lateinit var userService: UserService
@@ -46,6 +50,58 @@ internal class UserServiceUnitTest {
 
         // then
         assertEquals(sampleUser, result)
+    }
+
+    @Test
+    fun `Tali Id 를 통해 User ID 를 반환할때 존재하지 않으면 UserNotFoundException 을 던진다`() {
+        // given
+        val taliId = "nonexist"
+        every { userIdMappingRepository.findIdByTaliId(taliId) } returns null
+
+        // when, then
+        assertThrows<UserNotFoundException> {
+            userService.findUserIdByTaliId(taliId)
+        }
+    }
+
+    @Test
+    fun `Tali Id 를 통해 User ID 를 반환한다`() {
+        // given
+        val taliId = "gun025bba"
+        val userId = 1L
+        every { userIdMappingRepository.findIdByTaliId(taliId) } returns userId
+
+        // when
+        val result = userService.findUserIdByTaliId(taliId)
+
+        // then
+        assertEquals(userId, result)
+    }
+
+    @Test
+    fun `User Id 를 통해 Tali ID 를 반환할 때 존재하지 않으면 UserNotFoundException 을 던진다`() {
+        // given
+        val userId = 1L
+        every { userIdMappingRepository.findTaliIdById(userId) } returns null
+
+        // when, then
+        assertThrows<UserNotFoundException> {
+            userService.findTaliIdByUserId(userId)
+        }
+    }
+
+    @Test
+    fun `User Id 를 통해 Tali ID 를 반환한다`() {
+        // given
+        val userId = 1L
+        val taliId = "gun025bba"
+        every { userIdMappingRepository.findTaliIdById(userId) } returns taliId
+
+        // when
+        val result = userService.findTaliIdByUserId(userId)
+
+        // then
+        assertEquals(taliId, result)
     }
 
     @Test

@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.annotation.Import
+import org.springframework.transaction.annotation.Transactional
 import kotlin.test.assertEquals
 
 @SpringBootTest
@@ -55,6 +56,7 @@ class AlarmOptionRepositoryTest(
     }
 
     @Test
+    @Transactional
     fun `Sms 알람 수신 여부를 수정한다`() {
         // given
         val existIsSmsAlarmReceived = sampleAlarmOption.isSmsAlarmReceived
@@ -84,6 +86,7 @@ class AlarmOptionRepositoryTest(
     }
 
     @Test
+    @Transactional
     fun `Mail 알람 수신 여부를 수정한다`() {
         // given
         val existIsMailAlarmReceived = sampleAlarmOption.isMailAlarmReceived

@@ -3,7 +3,6 @@ package com.gunyoung.persona.api.controller
 import com.gunyoung.persona.api.model.*
 import com.gunyoung.persona.common.service.UserService
 import org.springframework.web.bind.annotation.*
-import java.time.LocalDate
 
 @RestController
 @RequestMapping("/v1/api/users")

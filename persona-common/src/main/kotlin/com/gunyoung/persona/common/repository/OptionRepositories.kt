@@ -32,7 +32,6 @@ class CustomizedAlarmOptionRepositoryImpl(
             .where(userIdEquals(userId))
             .fetchOne()
 
-    @Transactional
     override fun updateSmsAlarmReceived(userId: Long, isReceived: Boolean): Long =
         queryFactory.update(alarmOptionEntity)
             .set(alarmOptionEntity.isSmsAlarmReceived, isReceived)
@@ -45,7 +44,6 @@ class CustomizedAlarmOptionRepositoryImpl(
             .where(userIdEquals(userId))
             .fetchOne()
 
-    @Transactional
     override fun updateMailAlarmReceived(userId: Long, isReceived: Boolean): Long =
         queryFactory.update(alarmOptionEntity)
             .set(alarmOptionEntity.isMailAlarmReceived, isReceived)
