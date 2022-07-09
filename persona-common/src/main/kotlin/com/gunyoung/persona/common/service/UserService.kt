@@ -1,5 +1,6 @@
 package com.gunyoung.persona.common.service
 
+import com.gunyoung.kommon.common.util.notReturn
 import com.gunyoung.persona.common.model.UserEntity
 import com.gunyoung.persona.common.model.UserNotFoundException
 import com.gunyoung.persona.common.repository.UserIdMappingRepository
@@ -33,4 +34,8 @@ class UserService(
     }
 
     private fun UserEntity.save(): UserEntity = userRepository.save(this)
+
+    @Transactional
+    fun deleteUserByTaliId(taliId: String) =
+        userRepository.deleteUserByTaliId(taliId).notReturn()
 }
