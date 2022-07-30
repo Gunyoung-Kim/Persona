@@ -56,8 +56,8 @@ class UserIdMappingRepositoryImpl(
 ) : UserIdMappingRepository {
 
     companion object {
-        const val KEY_TALI_ID_BY_ID = "id:%s:taliId:"
-        const val KEY_ID_BY_TALI_ID = "taliId:%s:id:"
+        private const val KEY_TALI_ID_BY_ID = "id:%s:taliId:"
+        private const val KEY_ID_BY_TALI_ID = "taliId:%s:id:"
     }
 
     override fun findTaliIdById(id: Long): String? =
@@ -70,8 +70,9 @@ class UserIdMappingRepositoryImpl(
             String.format(KEY_ID_BY_TALI_ID, taliId)
         )?.toLongOrElseNull()
 
-    override fun setIdAndTaliId(id: Long, taliId: String) {
-        redisTemplate.opsForValue().set("id:${id}:taliId:", taliId)
-        redisTemplate.opsForValue().set("taliId:${taliId}:id:", id.toString())
-    }
+    override fun setIdAndTaliId(id: Long, taliId: String): Unit =
+        redisTemplate.opsForValue().let {
+            it.set(KEY_TALI_ID_BY_ID, taliId)
+            it.set(KEY_ID_BY_TALI_ID, id.toString())
+        }
 }
