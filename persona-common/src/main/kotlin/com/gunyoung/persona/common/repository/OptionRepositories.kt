@@ -5,7 +5,6 @@ import com.gunyoung.persona.common.model.QAlarmOptionEntity.alarmOptionEntity
 import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
-import org.springframework.transaction.annotation.Transactional
 
 @Repository
 interface AlarmOptionRepository : JpaRepository<AlarmOptionEntity, Long>, CustomizedAlarmOptionRepository
