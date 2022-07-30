@@ -26,11 +26,11 @@ class RedisConfig(
         LettuceConnectionFactory(redisIdMappingHost, redisIdMappingPort)
 
     @Bean
-    fun idMappingRedisTemplate(): RedisTemplate<String, Long> =
-        RedisTemplate<String, Long>().apply {
+    fun idMappingRedisTemplate(): RedisTemplate<String, String> =
+        RedisTemplate<String, String>().apply {
             setConnectionFactory(idMappingRedisConnectionFactory())
             keySerializer = StringRedisSerializer()
-            valueSerializer = GenericToStringSerializer(Long::class.java)
+            valueSerializer = StringRedisSerializer()
         }
 }
 
